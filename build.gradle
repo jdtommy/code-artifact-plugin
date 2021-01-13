@@ -1,0 +1,34 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.4.21'
+    id 'java-gradle-plugin'
+    id 'maven-publish'
+    id 'com.gradle.plugin-publish' version '0.12.0'
+}
+
+pluginBundle {
+    website = 'https://github.com/jdtommy/code-artifact-plugin'
+    vcsUrl = 'https://github.com/jdtommy/code-artifact-plugin.git'
+    tags = ['gradle', 'plugin', 'aws', 'codeartifact']
+}
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'com.cdk.recreation.gradle.code-artifact-plugin'
+            displayName = 'Password Process for AWS CodeArtifact Repo'
+            description = 'Adds a method to get the AWS codeArtficat password by executing a process to acces the cli'
+            implementationClass = 'com.cdk.recreation.gradle.code_artifact_plugin.AwsCAPlugin'
+        }
+    }
+}
+
+group 'com.cdk.recreation.gradle.code-artifact-plugin'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+}
